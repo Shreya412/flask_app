@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excel Sheet</title>
+</head>
+<body>
+    <div id="feedback">
+    <form class="" action="data" method="post">
+        <input type="text" name="Username" value="Enter name"> <br>
+        <input type="file" name="upload_file" value="" accept=".xlsx, .csv" onchange="validate_fileupload(this);"/><br>
+        
+        <input type="submit" name="" value="Upload" onclick="return valid_form();"/><br>
+    </form></div>
+    <script>
+        var valid = false;
+        
+        function validate_fileupload(input_element)
+        {
+            var el = document.getElementById("feedback");
+            var upload_file = input_element.value;
+            var allowed_extensions = new Array("xlsx", "csv");
+            var file_extension = upload_file.split('.').pop(); 
+            for(var i = 0; i < allowed_extensions.length; i++)
+            {
+                if(allowed_extensions[i]==file_extension)
+                {
+                    valid = true; 
+                    //el.innerHTML = "";
+                    return ;
+                }
+            }
+            //el.innerHTML="Invalid file";
+            valid = false;
+            alert("Invalid file");
+        }
+        
+        function valid_form()
+        {
+            return valid;
+        }
+    </script>
+</body>
+</html>
